@@ -573,6 +573,7 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
                         if let icon = e.icon, dataSet.isDrawIconsEnabled
                         {
                             let iconHalfWidth = icon.size.width / 2.0
+                            let iconHalfHeight = icon.size.height / 2.0
                             var px = x
                             var py = val >= 0.0
                                 ? (rect.origin.y + posOffset)
@@ -580,7 +581,7 @@ open class BarChartRenderer: BarLineScatterCandleBubbleRenderer
                             
                             px += iconsOffset.x
                             py += iconsOffset.y
-                            if viewPortHandler.isInBoundsX(px - iconHalfWidth) && viewPortHandler.isInBoundsX(px + iconHalfWidth) {
+                            if viewPortHandler.isInBoundsX(px - iconHalfWidth) && viewPortHandler.isInBoundsX(px + iconHalfWidth) && viewPortHandler.isInBoundsY(py + iconHalfHeight) {
                                 ChartUtils.drawImage(
                                     context: context,
                                     image: icon,
